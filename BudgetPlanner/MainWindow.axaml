@@ -1,0 +1,43 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        x:Class="BudgetPlanner.MainWindow"
+        Title="BudgetPlanner"
+        MinHeight="400"
+        MinWidth="400">
+    <Grid>
+        <!-- Define row heights as percentages -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="20*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Menu at the top taking 15% of the height -->
+        <Menu Grid.Row="0">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Open..."/>
+                <Separator/>
+                <MenuItem Header="_Exit"/>
+            </MenuItem>
+            <MenuItem Header="_Edit">
+                <MenuItem Header="Copy"/>
+                <MenuItem Header="Paste"/>
+            </MenuItem>
+        </Menu>
+
+        <!-- Panel in the middle taking 70% of the height -->
+        <Panel Grid.Row="1" Background="Gray">
+            <Grid Name="BudgetLog">
+                <!-- Your content here -->
+            </Grid>
+        </Panel>
+
+        <!-- StackPanel at the bottom taking 15% of the height -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button VerticalAlignment="Center" Click="OpenPopups" Classes="income">Add Income</Button>
+            <Button VerticalAlignment="Center" Click="OpenPopups" Classes="expense">Add Expense</Button>
+        </StackPanel>
+    </Grid>
+</Window>

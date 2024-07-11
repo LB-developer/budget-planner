@@ -1,0 +1,32 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="BudgetPlanner.Resources.PopupWindow"
+        MaxHeight="200"
+        >
+      <Window.Styles>
+        <StyleInclude Source="/Styles/Styles.axaml"/>
+      </Window.Styles>
+    <!-- Define your UI components here -->
+    
+    <Grid>
+      <Grid.RowDefinitions>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="45*"/>
+            <RowDefinition Height="25*"/>
+        </Grid.RowDefinitions>
+      <!--  -->
+      <DockPanel Grid.Row="0">
+        <Button VerticalAlignment="Bottom" Click="TransactionPressed">Daily</Button>
+        <Button VerticalAlignment="Bottom" Click="TransactionPressed">Weekly</Button>
+        <Button VerticalAlignment="Bottom" Click="TransactionPressed">Monthly</Button>
+        <Button VerticalAlignment="Bottom" Click="TransactionPressed">Yearly</Button>
+        <Button VerticalAlignment="Bottom" Click="TransactionPressed">One-Off</Button>
+      </DockPanel> 
+      <TextBox Grid.Row="1" VerticalAlignment="Top" Name="Specific" Watermark="$"></TextBox>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+          <Button>OK</Button>
+          <Button Click="ExitPressed">EXIT</Button>
+        </StackPanel>
+    </Grid>
+
+</Window>

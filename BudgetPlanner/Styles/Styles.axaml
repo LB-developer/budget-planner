@@ -1,0 +1,40 @@
+<Styles  xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        >
+        <Style Selector="TextBlock.bold">
+          <Setter Property="FontSize" Value="24"/>
+          <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <!-- All Buttons -->
+        <Style Selector="Button">
+          <Setter Property="Margin" Value="10" />
+          
+        </Style>
+        <!-- Income Button -->
+        <Style Selector="Button.income">
+          
+          <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="Green" />
+          </Style>
+        </Style>
+        <!-- Expense Button -->
+        <Style Selector="Button.expense">
+          
+          <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="Red" />
+          </Style>
+        </Style>
+
+        <Style Selector="Button.expense">
+          
+          <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="Red" />
+          </Style>
+        </Style>
+        <!-- All TextBoxes -->
+        <Style Selector="TextBox#Specific">
+          <Setter Property="Margin" Value="20" />
+          
+        </Style>
+
+</Styles>
