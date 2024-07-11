@@ -24,17 +24,17 @@
             <Setter Property="Background" Value="Red" />
           </Style>
         </Style>
-
-        <Style Selector="Button.expense">
-          
-          <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Background" Value="Red" />
-          </Style>
-        </Style>
         <!-- All TextBoxes -->
         <Style Selector="TextBox#Specific">
           <Setter Property="Margin" Value="20" />
-          
+        </Style>
+        
+        <Style Selector="Button.default">
+        
+        </Style>
+
+        <Style Selector="Button.selected">
+          <Setter Property="Background" Value="Yellow" />
         </Style>
 
 </Styles>

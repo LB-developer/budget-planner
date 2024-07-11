@@ -8,7 +8,8 @@ namespace BudgetPlanner.Resources
 {
     public partial class PopupWindow : Window
     {   
-        string transaction = "";
+        string TransactionType = "";
+        string TransactionValue = "";
       // Define an event to signal when a response is ready
         public event EventHandler<string>? ResponseReceived;
         public PopupWindow()
@@ -18,8 +19,17 @@ namespace BudgetPlanner.Resources
         
         private void OnResponseInformation(object sender, RoutedEventArgs e)
         {
-            var response = "User's response"; // Replace with actual logic to get the response
-
+            
+            TransactionValue = InputValue.Text ?? string.Empty;
+            if (TransactionValue == string.Empty)
+            {
+              InputValue.Watermark = "Value must be entered";
+              return;
+            }
+            
+            var type = TransactionType; // type of income/expense
+            var value = TransactionValue; // input value of income/expense
+            var response = $"{type},{value}";
             // Raise the event with the user's response
             ResponseReceived?.Invoke(this, response);
 
@@ -29,7 +39,11 @@ namespace BudgetPlanner.Resources
     
         private void TransactionPressed(object sender, RoutedEventArgs e)
         {
-          Debug.WriteLine("TransactionPressed");
+          
+          if (sender is Button button)
+          {
+          TransactionType = button.Content?.ToString() ?? string.Empty;
+          }
 
         }
 

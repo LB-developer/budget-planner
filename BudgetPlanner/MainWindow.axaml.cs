@@ -28,10 +28,17 @@ public partial class MainWindow : Window
         private void OnPopupsResponseReceived(object? sender, string response)
         {
             // Handle the response from the popup
-            if (response != null)
+            var parts = response.Split(",");
+            foreach (var part in parts)
             {
+              Console.WriteLine(part);
+            };
+            if (parts.Length == 2)
+            {
+                string type = parts[0];
+                decimal value = decimal.Parse(parts[1]);
                 // Do something with the response
-                Debug.WriteLine("Response from popup: " + response);
+                Debug.WriteLine($"Response from popup: type:{type} and value:{value}");
             }
             else
             {
