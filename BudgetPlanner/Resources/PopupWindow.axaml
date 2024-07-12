@@ -2,31 +2,39 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="BudgetPlanner.Resources.PopupWindow"
         Height="200"
-        Width="425">
+        Width="600"
+        KeyDown="WindowKeyDown">
       <Window.Styles>
         <StyleInclude Source="/Styles/Styles.axaml"/>
       </Window.Styles>
     <!-- Define your UI components here -->
     
-    <Grid>
+    <Grid ShowGridLines="True">
       <Grid.RowDefinitions>
-            <RowDefinition Height="30*"/>
-            <RowDefinition Height="45*"/>
-            <RowDefinition Height="25*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
       <!--  -->
-      <DockPanel Grid.Row="0">
-        <Button VerticalAlignment="Bottom" Click="TransactionPressed">Daily</Button>
-        <Button VerticalAlignment="Bottom" Click="TransactionPressed">Weekly</Button>
-        <Button VerticalAlignment="Bottom" Click="TransactionPressed">Monthly</Button>
-        <Button VerticalAlignment="Bottom" Click="TransactionPressed">Yearly</Button>
-        <Button VerticalAlignment="Bottom" Click="TransactionPressed">One-Off</Button>
-      </DockPanel> 
-      <TextBox x:Name="InputValue" Grid.Row="1" VerticalAlignment="Top" Name="Specific" Watermark="$"></TextBox>
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-          <Button Click="OnResponseInformation">OK</Button>
-          <Button Click="ExitPressed">EXIT</Button>
-        </StackPanel>
+      
+      <Button Content="Daily" HorizontalAlignment="Stretch" Grid.Row="0" Grid.Column="0" Click="TransactionPressed"/>
+      <Button Content="Weekly" HorizontalAlignment="Stretch" Grid.Row="0" Grid.Column="1" Click="TransactionPressed"/>
+      <Button Content="Monthly" HorizontalAlignment="Stretch" Grid.Row="0" Grid.Column="2" Click="TransactionPressed"/>
+      <Button Content="Yearly" HorizontalAlignment="Stretch" Grid.Row="0" Grid.Column="3" Click="TransactionPressed"/>
+      <Button Content="One-Off" HorizontalAlignment="Stretch" Grid.Row="0" Grid.Column="4" Click="TransactionPressed"/>
+      
+      <TextBox HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" x:Name="InputTransaction" Classes="Default" Watermark="Enter Transaction Name"/>
+      <TextBox HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" x:Name="InputValue" Classes="Default" Watermark="Enter Transaction Value"/>
+        
+        <Button Content="Submit" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" Grid.Row="2" Grid.Column="3" Click="OnResponseInformation"/>
+        <Button Content="EXIT" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" Grid.Row="2" Grid.Column="4" Click="ExitPressed"/>
     </Grid>
 
 </Window>

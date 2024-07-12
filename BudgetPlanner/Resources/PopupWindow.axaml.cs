@@ -1,6 +1,7 @@
 using System;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using Avalonia.Input;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
@@ -33,10 +34,21 @@ namespace BudgetPlanner.Resources
             // Raise the event with the user's response
             ResponseReceived?.Invoke(this, response);
 
-            // Close the popup
+            // Close the popup window
             this.Close();
         }
     
+        private void WindowKeyDown(object sender, KeyEventArgs e)
+        {
+          if (e.Key == Key.Enter)
+          {
+            OnResponseInformation(sender, e);
+          }
+          if (e.Key == Key.Back)
+          {
+            ExitPressed(sender, e);
+          }
+        }
         private void TransactionPressed(object sender, RoutedEventArgs e)
         {
           

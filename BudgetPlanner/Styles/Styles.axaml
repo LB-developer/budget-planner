@@ -24,7 +24,11 @@
             <Setter Property="Background" Value="Red" />
           </Style>
         </Style>
-        <!-- All TextBoxes -->
+        <!-- TextBoxes -->
+        <Style Selector="TextBox.Default">
+          <Setter Property="Margin" Value="2" />
+        </Style>
+
         <Style Selector="TextBox#Specific">
           <Setter Property="Margin" Value="20" />
         </Style>

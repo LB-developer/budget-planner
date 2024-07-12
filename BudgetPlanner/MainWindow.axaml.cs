@@ -8,11 +8,12 @@ using System.Threading.Tasks;
 namespace BudgetPlanner;
 
 public partial class MainWindow : Window
-{
+{   
+    string overallTransaction = "";
+    int GridRows = 1; 
     public MainWindow()
     {
         InitializeComponent();
-        // AddExpenseButton.Click += ClickButton;
     }
     private void ClickButton(object sender, RoutedEventArgs e)
     {
@@ -20,8 +21,12 @@ public partial class MainWindow : Window
     }
      private void OpenPopups(object sender, RoutedEventArgs e)
         {
-            var popups = new PopupWindow();            
-            popups.ResponseReceived += OnPopupsResponseReceived; // Subscribe to the event
+            
+            if (sender == IncomeButton){overallTransaction = "Income";}
+            else{overallTransaction = "Expense";}
+            var popups = new PopupWindow(); 
+            // Subscribe to the event           
+            popups.ResponseReceived += OnPopupsResponseReceived; 
             popups.Show();
         }
 
@@ -35,10 +40,35 @@ public partial class MainWindow : Window
             };
             if (parts.Length == 2)
             {
-                string type = parts[0];
+                string frequency = parts[0];
                 decimal value = decimal.Parse(parts[1]);
-                // Do something with the response
-                Debug.WriteLine($"Response from popup: type:{type} and value:{value}");
+                // Create row then increment row counter for next transaction
+                BudgetLog.RowDefinitions.Add(new RowDefinition());
+                // create textblocks of info
+                TextBlock transactionType = new TextBlock();
+                transactionType.Text = overallTransaction;
+                
+                TextBlock transactionFrequency = new TextBlock();
+                transactionFrequency.Text = frequency;
+                
+                TextBlock transactionValue = new TextBlock();
+                transactionValue.Text = "$"+value.ToString("F2");
+
+                // set info to grid
+                Grid.SetRow(transactionType, GridRows);
+                Grid.SetColumn(transactionType, 0);
+
+                Grid.SetRow(transactionFrequency, GridRows);
+                Grid.SetColumn(transactionFrequency, 1);
+                
+                Grid.SetRow(transactionValue, GridRows);
+                Grid.SetColumn(transactionValue, 2);
+                
+                
+                GridRows++;
+                BudgetLog.Children.Add(transactionType);
+                BudgetLog.Children.Add(transactionFrequency);
+                BudgetLog.Children.Add(transactionValue);
             }
             else
             {

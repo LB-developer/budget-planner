@@ -29,15 +29,28 @@
 
         <!-- Panel in the middle taking 70% of the height -->
         <Panel Grid.Row="1" Background="Gray">
-            <Grid Name="BudgetLog">
-                <!-- Your content here -->
+            <Grid x:Name="BudgetLog" 
+                  ShowGridLines="True"
+                  Margin="10">
+                <Grid.RowDefinitions>
+                  <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="2*"/>
+                  <ColumnDefinition Width="*"/>
+                  <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0">Transaction Type</Label>
+                <Label Grid.Row="0" Grid.Column="1">Transaction Frequency</Label>
+                <Label Grid.Row="0" Grid.Column="2">Transaction Value</Label>
+
             </Grid>
         </Panel>
 
         <!-- StackPanel at the bottom taking 15% of the height -->
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button VerticalAlignment="Center" Click="OpenPopups" Classes="income">Add Income</Button>
-            <Button VerticalAlignment="Center" Click="OpenPopups" Classes="expense">Add Expense</Button>
+            <Button x:Name="IncomeButton" VerticalAlignment="Center" Click="OpenPopups" Classes="income">Add Income</Button>
+            <Button x:Name="ExpenseButton" VerticalAlignment="Center" Click="OpenPopups" Classes="expense">Add Expense</Button>
         </StackPanel>
     </Grid>
 </Window>
