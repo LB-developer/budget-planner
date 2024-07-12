@@ -9,9 +9,9 @@ namespace BudgetPlanner.Resources
 {
     public partial class PopupWindow : Window
     {   
-        bool TransactionFrequencySelected = false;
         string TransactionFrequency = "";
         string TransactionValue = "";
+        string TransactionName = "";
       // Define an event to signal when a response is ready
         public event EventHandler<string>? ResponseReceived;
         public PopupWindow()
@@ -22,48 +22,47 @@ namespace BudgetPlanner.Resources
         
         private void OnResponseInformation(object sender, RoutedEventArgs e)
         {
-            
-            TransactionValue = InputValue.Text ?? string.Empty;
-            if (!TransactionFrequencySelected)
+
+            if (ConditionsMet())
             {
-              
-              return;
-            }
-            
-            if (TransactionValue == string.Empty)
-            {
-              InputValue.Watermark = "Value must be entered";
-              return;
-            }
             // type of income/expense
             var type = TransactionFrequency; 
             // input value of income/expense
             var value = TransactionValue; 
             var response = $"{type},{value}";
+
             // Raise the event with the user's response
             ResponseReceived?.Invoke(this, response);
 
-            // Close the popup window
+            // Reset Input values & Close the popup window
+            TransactionFrequency = "";
+            TransactionValue = "";
+            TransactionName = "";
             this.Close();
+            }
+            else{
+              return;
+            }
+
+
         }
 
         private void WindowKeyDown(object sender, KeyEventArgs e)
         {
-          if (e.Key == Key.Enter && TransactionFrequencySelected)
-          {
-            OnResponseInformation(sender, e);
-          }
           if (e.Key == Key.Escape)
           {
             ExitPressed(sender, e);
           }
+          else if (e.Key == Key.Enter)
+          {
+            OnResponseInformation(sender, e);
+          }
+
         }
         private void TransactionPressed(object sender, RoutedEventArgs e)
         {
-          
           if (sender is Button button)
           {
-          TransactionFrequencySelected = true;
           TransactionFrequency = button.Content?.ToString() ?? string.Empty;
           }
 
@@ -74,6 +73,28 @@ namespace BudgetPlanner.Resources
           this.Close();
         }
 
+        private bool ConditionsMet()
+        {
+            TransactionName = InputName.Text ?? "";
+            TransactionValue = InputValue.Text ?? string.Empty;
+            
+            if (TransactionFrequency == string.Empty)
+            {
+              return false;
+            }
+            else if (TransactionValue == string.Empty)
+            {
+              InputValue.Watermark = "Value must be entered";
+              return false;
+            }
+            else if (TransactionName == string.Empty)
+            {
+              InputName.Watermark = "Name must be entered";
+              return false;
+            }
+
+            return true;
+        }
 
   }
 }
