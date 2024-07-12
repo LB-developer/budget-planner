@@ -1,7 +1,10 @@
 using System;
+using System.Linq;
+using System.Collections.Generic;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Input;
+using Avalonia.VisualTree;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
@@ -25,11 +28,10 @@ namespace BudgetPlanner.Resources
 
             if (ConditionsMet())
             {
-            // type of income/expense
-            var type = TransactionFrequency; 
-            // input value of income/expense
+            var frequency = TransactionFrequency; 
+            var name = TransactionName;
             var value = TransactionValue; 
-            var response = $"{type},{value}";
+            var response = $"{frequency},{name},{value}";
 
             // Raise the event with the user's response
             ResponseReceived?.Invoke(this, response);
@@ -63,7 +65,9 @@ namespace BudgetPlanner.Resources
         {
           if (sender is Button button)
           {
+          ChangeButtonClasses("highlighted", "default");
           TransactionFrequency = button.Content?.ToString() ?? string.Empty;
+          button.Classes.Add("selected");
           }
 
         }
@@ -80,6 +84,7 @@ namespace BudgetPlanner.Resources
             
             if (TransactionFrequency == string.Empty)
             {
+              ChangeButtonClasses("default", "highlighted");
               return false;
             }
             else if (TransactionValue == string.Empty)
@@ -95,6 +100,28 @@ namespace BudgetPlanner.Resources
 
             return true;
         }
+        private void ChangeButtonClasses(string oldClass, string newClass)
+        {
 
-  }
+            // Get all buttons in the PopupGrid grid
+            var buttons = PopupGrid.GetVisualDescendants()
+                                  .OfType<Button>();
+                                  
+            
+            foreach (var button in buttons)
+            {
+              if (button.Classes.Contains("selected"))
+              {
+                button.Classes.Remove("selected");
+                button.Classes.Add("default");
+              }
+              if (button.Classes.Contains(oldClass))
+              {
+                // Remove the old class and add the new class
+                button.Classes.Remove(oldClass);
+                button.Classes.Add(newClass);
+              }   
+            }
+        }
+    }
 }

@@ -5,11 +5,28 @@
           <Setter Property="FontSize" Value="24"/>
           <Setter Property="FontWeight" Value="Bold"/>
         </Style>
+        <!-- Unspecific Styling -->
+        <Style Selector="Label.budget-log-header">
+          <Setter Property="HorizontalAlignment" Value="Center"/>
+          
+        </Style>
+        <Style Selector="TextBlock.budget-log-item">
+          <Setter Property="HorizontalAlignment" Value="Center"/>
+          
+        </Style>
+        
+        
+        
         <!-- All Buttons -->
         <Style Selector="Button">
           <Setter Property="Margin" Value="10" />
           
         </Style>
+
+        <Style Selector="Button.default">
+
+        </Style>
+
         <!-- Income Button -->
         <Style Selector="Button.income">
           
@@ -24,6 +41,15 @@
             <Setter Property="Background" Value="Red" />
           </Style>
         </Style>
+
+        <Style Selector="Button.selected">
+          <Setter Property="Background" Value="Green" />
+        </Style>
+
+        <Style Selector="Button.highlighted">
+          <Setter Property="BorderThickness" Value="1" />
+          <Setter Property="BorderBrush" Value="Red" />
+        </Style>
         <!-- TextBoxes -->
         <Style Selector="TextBox.Default">
           <Setter Property="Margin" Value="2" />
@@ -31,14 +57,6 @@
 
         <Style Selector="TextBox#Specific">
           <Setter Property="Margin" Value="20" />
-        </Style>
-        
-        <Style Selector="Button.default">
-
-        </Style>
-
-        <Style Selector="Button.selected">
-          <Setter Property="Background" Value="Yellow" />
         </Style>
 
 </Styles>

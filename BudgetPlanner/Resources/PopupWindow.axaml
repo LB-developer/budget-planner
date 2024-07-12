@@ -9,7 +9,7 @@
       </Window.Styles>
     <!-- Define your UI components here -->
     
-    <Grid ShowGridLines="True">
+    <Grid x:Name="PopupGrid">
       <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>

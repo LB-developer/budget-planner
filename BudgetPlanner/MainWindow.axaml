@@ -36,13 +36,15 @@
                   <RowDefinition />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="2*"/>
+                  <ColumnDefinition Width="*"/>
+                  <ColumnDefinition Width="*"/>
                   <ColumnDefinition Width="*"/>
                   <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Label Grid.Row="0" Grid.Column="0">Transaction Type</Label>
-                <Label Grid.Row="0" Grid.Column="1">Transaction Frequency</Label>
-                <Label Grid.Row="0" Grid.Column="2">Transaction Value</Label>
+                <Label Classes="budget-log-header" Grid.Row="0" Grid.Column="0">Transaction Type</Label>
+                <Label Classes="budget-log-header" Grid.Row="0" Grid.Column="1">Transaction Frequency</Label>
+                <Label Classes="budget-log-header" Grid.Row="0" Grid.Column="2">Transaction Name</Label>
+                <Label Classes="budget-log-header" Grid.Row="0" Grid.Column="3">Transaction Value</Label>
 
             </Grid>
         </Panel>
