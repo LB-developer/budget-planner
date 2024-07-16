@@ -1,0 +1,73 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="BudgetPlanner.Resources.Views.DashboardView"
+             >
+     <Grid>
+        <!-- Define Rows and Columns -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Current Balance and Recent Transactions -->
+        <StackPanel Background="Green" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Margin="10" >
+            <Grid>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+              </Grid.RowDefinitions>
+              <Grid.ColumnDefinitions>
+                 <ColumnDefinition Width="*"/>
+                 <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+              
+              <StackPanel Grid.Row="0" Grid.Column="0">
+                <TextBlock Text="Current Balance" FontSize="16" Margin="10"/>
+                <TextBlock Text="$X,XXX.XX" FontSize="24" Margin="10"/>
+              </StackPanel>
+
+              <StackPanel Grid.Row="0" Grid.Column="1">
+                <TextBlock Text="Net Worth" FontSize="16" Margin="10"/>
+                <TextBlock Text="$X,XXX.XX" FontSize="24" Margin="10"/>
+              </StackPanel>
+              <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Text="Recent Transactions" FontSize="16" Margin="10"/>
+            </Grid>
+            <!-- Add recent transactions list here -->
+        </StackPanel>
+
+        <!-- Calendar -->
+        <StackPanel Background="Pink" Grid.Row="0" Grid.Column="1" Margin="10">
+            <!-- Calendar Header with Navigation -->
+          <Calendar x:Name="calendar" 
+                    SelectionMode="MultipleRange" 
+                    />
+          <TextBlock Margin="20" Text="{Binding #calendar.SelectedDate}"/>
+        </StackPanel>
+
+        <!-- Summary Report -->
+        <StackPanel Background="Blue" Grid.Row="1" Grid.Column="1" Margin="10" >
+            <TextBlock HorizontalAlignment="Center" Text="Summary Report" FontSize="16" Margin="10"/>
+            <!-- Add summary report content here -->
+            <Grid ShowGridLines="True">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="50*"/>
+              </Grid.RowDefinitions>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+
+              <TextBlock Margin="10" Grid.Row="0" Grid.RowSpan="2" VerticalAlignment="Stretch" Grid.Column="0" Text="Income vs. Expenses PIE CHART"/>
+              <TextBlock Margin="10" Grid.Row="0" Grid.Column="1" VerticalAlignment="Stretch" Text="SET BUDGET"/>
+              <TextBlock Margin="10" Grid.Row="1" Grid.Column="1" VerticalAlignment="Stretch" Text="SPENDING CATEGORIES TRANSACTION BREAKDOWN"/>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</UserControl>
+
+

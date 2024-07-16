@@ -4,55 +4,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         x:Class="BudgetPlanner.MainWindow"
         Title="BudgetPlanner"
-        MinHeight="400"
-        MinWidth="400">
+        MinHeight="700"
+        MinWidth="970"
+        >
+
     <Grid>
-        <!-- Define row heights as percentages -->
-        <Grid.RowDefinitions>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="70*"/>
-            <RowDefinition Height="20*"/>
-        </Grid.RowDefinitions>
-
-        <!-- Menu at the top taking 10% of the height -->
-        <Menu Grid.Row="0">
-            <MenuItem Header="_File">
-                <MenuItem Header="_Open..."/>
-                <Separator/>
-                <MenuItem Header="_Exit"/>
-            </MenuItem>
-            <MenuItem Header="_Edit">
-                <MenuItem Header="Copy"/>
-                <MenuItem Header="Paste"/>
-            </MenuItem>
-        </Menu>
-
-        <!-- Panel in the middle taking 70% of the height -->
-        <Panel Grid.Row="1" Background="Gray">
-            <Grid x:Name="BudgetLog" 
-                  ShowGridLines="True"
-                  Margin="10">
-                <Grid.RowDefinitions>
-                  <RowDefinition />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="*"/>
-                  <ColumnDefinition Width="*"/>
-                  <ColumnDefinition Width="*"/>
-                  <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Label Classes="budget-log-header" Grid.Row="0" Grid.Column="0">Transaction Type</Label>
-                <Label Classes="budget-log-header" Grid.Row="0" Grid.Column="1">Transaction Frequency</Label>
-                <Label Classes="budget-log-header" Grid.Row="0" Grid.Column="2">Transaction Name</Label>
-                <Label Classes="budget-log-header" Grid.Row="0" Grid.Column="3">Transaction Value</Label>
-
-            </Grid>
-        </Panel>
-
-        <!-- StackPanel at the bottom taking 20% of the height -->
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:Name="IncomeButton" VerticalAlignment="Center" Click="OpenPopups" Classes="income">Add Income</Button>
-            <Button x:Name="ExpenseButton" VerticalAlignment="Center" Click="OpenPopups" Classes="expense">Add Expense</Button>
-        </StackPanel>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="5*"/>
+        <RowDefinition Height="5*"/>
+        <RowDefinition Height="85*"/>
+        <RowDefinition Height="5*"/>
+      </Grid.RowDefinitions>
+      <!-- Top Menu -->
+      <Menu Grid.Row="0"  Classes="header-menu">
+          <MenuItem Header="_File">
+              <MenuItem Header="_Open..."/>
+              <MenuItem Header="_Import..."/>
+              <MenuItem Header="_Export..."/>
+              <Separator/>
+              <MenuItem Header="_Exit"/>
+          </MenuItem>
+          <MenuItem Header="_Edit">
+              <MenuItem Header="Copy"/>
+              <MenuItem Header="Paste"/>
+          </MenuItem>
+      </Menu>
+        <!-- Header -->
+        <TextBlock x:Name="TitleHeader" Grid.Row="1" Text="Dashboard"  FontSize="24" HorizontalAlignment="Center" Margin="10"/>
+        <!-- Main Content Area -->
+        <DockPanel Grid.Row="2"  >
+          <ContentControl x:Name="MainContent" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        </DockPanel>
+        <!-- Bottom Navigation -->
+        <DockPanel Grid.Row="3" VerticalAlignment="Bottom" Background="Gray">
+            <Button Content="Dashboard" Classes="navigation" Click="ShowDashboard"/>
+            <Button Content="Transaction Log" Classes="navigation" Click="ShowAddTransaction" />
+            <Button Content="Reports" Classes="navigation" Click="ShowReports" />
+            <Button Content="Settings" Classes="navigation" HorizontalAlignment="Right" Click="ClickAButton"/>
+        </DockPanel>
     </Grid>
 </Window>

@@ -1,62 +1,140 @@
 <Styles  xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         >
-        <Style Selector="TextBlock.bold">
-          <Setter Property="FontSize" Value="24"/>
-          <Setter Property="FontWeight" Value="Bold"/>
-        </Style>
-        <!-- Unspecific Styling -->
-        <Style Selector="Label.budget-log-header">
-          <Setter Property="HorizontalAlignment" Value="Center"/>
-          
-        </Style>
-        <Style Selector="TextBlock.budget-log-item">
-          <Setter Property="HorizontalAlignment" Value="Center"/>
-          
-        </Style>
-        
-        
-        
-        <!-- All Buttons -->
-        <Style Selector="Button">
-          <Setter Property="Margin" Value="10" />
-          
-        </Style>
+        <Style Selector="Menu.header-menu">
+        <Setter Property="Background" Value="#383838"/>
+      </Style>
+    
+    <Style Selector="Window">
+        <Setter Property="Background" Value="#2E2E2E"/> <!-- Dark gray background -->
+    </Style>
 
-        <Style Selector="Button.default">
+    <Style Selector="TextBlock.bold">
+      <Setter Property="FontSize" Value="24"/>
+      <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
 
-        </Style>
+    <Style Selector="Button.common">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+    </Style>
 
-        <!-- Income Button -->
-        <Style Selector="Button.income">
-          
-          <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Background" Value="Green" />
-          </Style>
-        </Style>
-        <!-- Expense Button -->
-        <Style Selector="Button.expense">
-          
-          <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Background" Value="Red" />
-          </Style>
-        </Style>
+     <Style Selector="Button.submit">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
 
-        <Style Selector="Button.selected">
+    <Style Selector="Button.exit">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+
+    <Style Selector="TextBox.default">
+      <Setter Property="HorizontalAlignment" Value="Stretch"/>
+      <Setter Property="VerticalAlignment" Value="Stretch"/>
+      <Setter Property="HorizontalContentAlignment" Value="Left"/>
+      <Setter Property="VerticalContentAlignment" Value="Center"/>
+      <Setter Property="Margin" Value="5"/>
+      <Setter Property="FontSize" Value="44"/> <!-- Initial font size -->
+      <Setter Property="Padding" Value="5"/>
+    </Style>
+
+    <Style Selector="DatePicker.default">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="Margin" Value="5"/>
+    </Style>
+
+    <Style Selector="Button.navigation">
+        <Setter Property="Background" Value="#aa00ff" />
+        <Setter Property="Height" Value="60" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+
+    <Style Selector="Button.selected">
+      <Setter Property="Background" Value="Green" />
+    </Style>
+
+    <Style Selector="Button.highlighted">
+      <Setter Property="BorderThickness" Value="1" />
+      <Setter Property="BorderBrush" Value="Red" />
+    </Style>
+
+    <Style Selector="TextBox#Specific">
+      <Setter Property="Margin" Value="20" />
+    </Style>
+
+    <!-- Headers Style -->
+    <Style Selector="Label.budget-log-header">
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Background" Value="#3A3A3A"/> <!-- Darker gray background -->
+        <Setter Property="Foreground" Value="#FFFFFF"/> <!-- White text -->
+        <Setter Property="BorderBrush" Value="#4A4A4A"/> <!-- Even darker border -->
+        <Setter Property="BorderThickness" Value="1"/>
+    </Style>
+
+    <!-- Transaction Log Item Style -->
+    <Style Selector="TextBlock.budget-log-item.income">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="Background" Value="#4CAF50"/> <!-- Match the background -->
+        <Setter Property="Padding" Value="10"/>
+    </Style>
+
+    <Style Selector="TextBlock.budget-log-item.expense">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="Background" Value="#F44336"/> 
+        <Setter Property="Padding" Value="10"/>
+    </Style>
+    
+    <Style Selector="Button.income">
+      <Setter Property="Background" Value="#4CAF50"/>
+      <Setter Property="Foreground" Value="#FFFFFF"/>
+      <Setter Property="FontWeight" Value="Bold"/>
+      <Setter Property="Padding" Value="10"/>
+      <Setter Property="Margin" Value="10"/>
+      <Setter Property="CornerRadius" Value="5"/>
+      
+      <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
           <Setter Property="Background" Value="Green" />
-        </Style>
+      </Style>
+    </Style>
 
-        <Style Selector="Button.highlighted">
-          <Setter Property="BorderThickness" Value="1" />
-          <Setter Property="BorderBrush" Value="Red" />
-        </Style>
-        <!-- TextBoxes -->
-        <Style Selector="TextBox.Default">
-          <Setter Property="Margin" Value="2" />
-        </Style>
+    <Style Selector="Button.expense">
+      <Setter Property="Background" Value="#F44336"/>
+      <Setter Property="Foreground" Value="#FFFFFF"/>
+      <Setter Property="FontWeight" Value="Bold"/>
+      <Setter Property="Padding" Value="10"/>
+      <Setter Property="Margin" Value="10"/>
+      <Setter Property="CornerRadius" Value="5"/>
+      
+      <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+          <Setter Property="Background" Value="Red" />
+      </Style>
+    </Style>
 
-        <Style Selector="TextBox#Specific">
-          <Setter Property="Margin" Value="20" />
-        </Style>
-
+    <!-- Total Balance Style -->
+    <Style Selector="TextBlock#TotalBalanceTextBlock">
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="Foreground" Value="#FFFFFF"/> <!-- White text -->
+    </Style>
 </Styles>

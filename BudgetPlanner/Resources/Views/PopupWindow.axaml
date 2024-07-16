@@ -1,0 +1,40 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="BudgetPlanner.Resources.Views.PopupWindow"
+        KeyDown="WindowKeyDown">
+      <Window.Styles>
+        <StyleInclude Source="/Styles/Styles.axaml"/>
+      </Window.Styles>
+    
+    <Grid x:Name="PopupGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button Content="Daily" Classes="common" Grid.Row="0" Grid.Column="0" Click="TransactionPressed"/>
+        <Button Content="Weekly" Classes="common" Grid.Row="0" Grid.Column="1" Click="TransactionPressed"/>
+        <Button Content="Monthly" Classes="common" Grid.Row="0" Grid.Column="2" Click="TransactionPressed"/>
+        <Button Content="Yearly" Classes="common" Grid.Row="0" Grid.Column="3" Click="TransactionPressed"/>
+        <Button Content="One-Off" Classes="common" Grid.Row="0" Grid.Column="4" Click="TransactionPressed"/>
+      
+        <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" x:Name="InputName" Classes="default" Watermark="Enter Transaction Name" />
+        <TextBox Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" x:Name="InputValue" Classes="default" Watermark="Enter Transaction Valued"/>
+
+      
+        <DatePicker Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" x:Name="InputDate" Classes="default"/>
+      
+        <Button Content="Submit" Classes="submit" Grid.Row="2" Grid.Column="3" Click="OnResponseInformation"/>
+        <Button Content="EXIT" Classes="exit" Grid.Row="2" Grid.Column="4" Click="ExitPressed"/>
+    
+    </Grid>
+
+</Window>

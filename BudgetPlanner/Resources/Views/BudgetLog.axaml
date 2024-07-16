@@ -1,0 +1,61 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        x:Class="BudgetPlanner.Resources.Views.BudgetLog"
+        MinHeight="581"
+        MinWidth="784">
+    <UserControl.Styles>
+        <StyleInclude Source="/Styles/Styles.axaml"/>
+    </UserControl.Styles>
+ <Grid>
+        <!-- Define row heights with percentage sizing -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/> <!-- Total Balance -->
+            <RowDefinition Height="10*"/> <!-- Headers -->
+            <RowDefinition Height="70*"/> <!-- Log Entries -->
+            <RowDefinition Height="10*"/> <!-- Buttons -->
+        </Grid.RowDefinitions>
+
+        <!-- Total Balance Display -->
+        <TextBlock Grid.Row="0" x:Name="TotalBalanceTextBlock" Text="Total Balance: $0.00" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+
+        <!-- Headers -->
+        <Grid Grid.Row="1" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Classes="budget-log-header" Grid.Column="0">Type</Label>
+            <Label Classes="budget-log-header" Grid.Column="1">Frequency</Label>
+            <Label Classes="budget-log-header" Grid.Column="2">Name</Label>
+            <Label Classes="budget-log-header" Grid.Column="3">Value</Label>
+            <Label Classes="budget-log-header" Grid.Column="4">Date</Label>
+        </Grid>
+
+        <!-- Log Entries -->
+        <ScrollViewer Grid.Row="2" Margin="10">
+            <Grid x:Name="BudgetLogGrid">
+                <Grid.RowDefinitions>
+                    <!-- Initially no rows defined here, rows will be added dynamically -->
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+            </Grid>
+        </ScrollViewer>
+
+        <!-- Buttons at the bottom -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50">
+            <Button x:Name="IncomeButton" VerticalAlignment="Center" Click="OpenPopups" Classes="income" Margin="5">Add Income</Button>
+            <Button x:Name="ExpenseButton" VerticalAlignment="Center" Click="OpenPopups" Classes="expense" Margin="5">Add Expense</Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

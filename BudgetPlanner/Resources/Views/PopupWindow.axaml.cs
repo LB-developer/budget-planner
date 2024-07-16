@@ -1,14 +1,11 @@
 using System;
 using System.Linq;
-using System.Collections.Generic;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Input;
 using Avalonia.VisualTree;
-using System.Diagnostics;
-using System.Threading.Tasks;
 
-namespace BudgetPlanner.Resources
+namespace BudgetPlanner.Resources.Views
 {
     public partial class PopupWindow : Window
     {   
@@ -22,7 +19,7 @@ namespace BudgetPlanner.Resources
             InitializeComponent();
             this.Focus();
         }
-        
+
         private void OnResponseInformation(object sender, RoutedEventArgs e)
         {
 
@@ -30,8 +27,10 @@ namespace BudgetPlanner.Resources
             {
             var frequency = TransactionFrequency; 
             var name = TransactionName;
-            var value = TransactionValue; 
-            var response = $"{frequency},{name},{value}";
+            var value = TransactionValue;
+            var date = InputDate.SelectedDate?.ToString("yyyy-MM-dd") ?? DateTime.Now.ToString("yyyy-MM-dd"); // Get the selected date or default to today
+
+            var response = $"{frequency},{name},{value},{date}";
 
             // Raise the event with the user's response
             ResponseReceived?.Invoke(this, response);
@@ -77,11 +76,12 @@ namespace BudgetPlanner.Resources
           this.Close();
         }
 
+        // require that specific entries be input
         private bool ConditionsMet()
         {
             TransactionName = InputName.Text ?? "";
-            TransactionValue = InputValue.Text ?? string.Empty;
-            
+            TransactionValue = InputValue.Text ?? "";
+            // Confirm that entries have been added
             if (TransactionFrequency == string.Empty)
             {
               ChangeButtonClasses("default", "highlighted");
@@ -107,7 +107,7 @@ namespace BudgetPlanner.Resources
             var buttons = PopupGrid.GetVisualDescendants()
                                   .OfType<Button>();
                                   
-            
+            // remove highlight when clicked
             foreach (var button in buttons)
             {
               if (button.Classes.Contains("selected"))
@@ -123,5 +123,7 @@ namespace BudgetPlanner.Resources
               }   
             }
         }
+
+        
     }
 }

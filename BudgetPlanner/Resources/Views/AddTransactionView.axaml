@@ -1,0 +1,12 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="BudgetPlanner.Resources.Views.AddTransactionView">
+    <StackPanel>
+        <TextBlock Text="Add Transaction" FontSize="16" Margin="10"/>
+        <ComboBox Margin="10"/>
+        <TextBox Watermark="Category" Margin="10"/>
+        <TextBox Watermark="Amount" Margin="10"/>
+        <DatePicker Margin="10"/>
+        <Button Content="Add" Margin="10"/>
+    </StackPanel>
+</UserControl>
