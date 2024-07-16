@@ -3,8 +3,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         x:Class="BudgetPlanner.Resources.Views.BudgetLog"
-        MinHeight="581"
-        MinWidth="784">
+        >
     <UserControl.Styles>
         <StyleInclude Source="/Styles/Styles.axaml"/>
     </UserControl.Styles>

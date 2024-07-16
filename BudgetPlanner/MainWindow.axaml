@@ -40,7 +40,7 @@
             <Button Content="Dashboard" Classes="navigation" Click="ShowDashboard"/>
             <Button Content="Transaction Log" Classes="navigation" Click="ShowAddTransaction" />
             <Button Content="Reports" Classes="navigation" Click="ShowReports" />
-            <Button Content="Settings" Classes="navigation" HorizontalAlignment="Right" Click="ClickAButton"/>
+            <Button Content="Settings" Classes="navigation" HorizontalAlignment="Right" Click="ShowSettings"/>
         </DockPanel>
     </Grid>
 </Window>
