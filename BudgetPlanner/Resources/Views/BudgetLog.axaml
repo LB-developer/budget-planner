@@ -55,7 +55,7 @@
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50">
             <Button x:Name="IncomeButton" VerticalAlignment="Center" Click="OpenPopups" Classes="income" Margin="5">Add Income</Button>
             <Button x:Name="ExpenseButton" VerticalAlignment="Center" Click="OpenPopups" Classes="expense" Margin="5">Add Expense</Button>
-            <!-- <Button x:Name="RemoveLastButton" VerticalAlignment="Center" Click="RemoveLastLog" Classes="" Margin="5">Remove Last Transaction</Button> -->
+            <Button x:Name="RemoveLastButton" VerticalAlignment="Center" Click="RemoveLastLog" Classes="" Margin="5">Remove Last Transaction</Button>
         </StackPanel>
     </Grid>
 </UserControl>

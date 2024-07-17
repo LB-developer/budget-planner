@@ -89,7 +89,7 @@
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="VerticalAlignment" Value="Top"/>
         <Setter Property="TextAlignment" Value="Center"/>
-        <Setter Property="Background" Value="#4CAF50"/> <!-- Match the background -->
+        <Setter Property="Background" Value="#4CAF50"/> <!-- Green for income -->
         <Setter Property="Padding" Value="10"/>
     </Style>
 
@@ -99,7 +99,7 @@
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="VerticalAlignment" Value="Top"/>
         <Setter Property="TextAlignment" Value="Center"/>
-        <Setter Property="Background" Value="#F44336"/> 
+        <Setter Property="Background" Value="#F44336"/> <!-- Red for expense -->
         <Setter Property="Padding" Value="10"/>
     </Style>
     

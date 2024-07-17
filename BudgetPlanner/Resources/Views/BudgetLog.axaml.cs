@@ -15,13 +15,14 @@ namespace BudgetPlanner.Resources.Views
 {
   public partial class BudgetLog : UserControl
   {   
-
+      private readonly TransactionService _transactionService;
       string overallTransaction = "";
       private int GridRows = 0; 
       public BudgetLog()
       {
         InitializeComponent();
         UpdateBudgetLog();
+        _transactionService = TransactionService.Instance;
       }
       private void ClickButton(object sender, RoutedEventArgs e)
       {
@@ -77,8 +78,8 @@ namespace BudgetPlanner.Resources.Views
       private void UpdateBudgetLog()
       {
         BudgetLogGrid.Children.Clear();
-        BudgetLogGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-
+        BudgetLogGrid.RowDefinitions.Clear();
+        GridRows = 0;
         // Add each transaction as a new row
         foreach (var transaction in TransactionService.Instance.Transactions)
         {
@@ -136,5 +137,13 @@ namespace BudgetPlanner.Resources.Views
         Grid.SetColumn(textBlock, column);
     }
 
+    private void RemoveLastLog(object sender, RoutedEventArgs e)
+    {
+        if (_transactionService != null)
+        {
+        _transactionService.RemoveLastTransaction();
+        UpdateBudgetLog();
+        }
+    }
   }
 }

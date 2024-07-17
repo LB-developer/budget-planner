@@ -31,6 +31,15 @@ namespace BudgetPlanner.Services
             Transactions.Remove(transaction);
             SaveTransactions();
         }
+        public void RemoveLastTransaction()
+        {
+            if (Transactions.Count > 0)
+            {
+                Transactions.RemoveAt(Transactions.Count - 1);
+                SaveTransactions();
+            }
+            
+        }
 
         public void LoadTransactions() // Changed from private to public
         {
