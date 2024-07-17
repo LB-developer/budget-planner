@@ -30,7 +30,7 @@
           </MenuItem>
       </Menu>
         <!-- Header -->
-        <TextBlock x:Name="TitleHeader" Grid.Row="1" Text="Dashboard"  FontSize="24" HorizontalAlignment="Center" Margin="10"/>
+        <TextBlock x:Name="TitleHeader" Grid.Row="1" Text="Dashboard" TextDecorations="Underline" FontSize="24" HorizontalAlignment="Center" Margin="10"/>
         <!-- Main Content Area -->
         <DockPanel Grid.Row="2"  >
           <ContentControl x:Name="MainContent" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>

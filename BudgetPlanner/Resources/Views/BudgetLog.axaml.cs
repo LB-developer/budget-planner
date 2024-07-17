@@ -1,8 +1,12 @@
+using System;
 using System.Linq;
 using System.Collections.Generic;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using System.Diagnostics;
+using BudgetPlanner.Models;
+using BudgetPlanner.Services;
+
 
 namespace BudgetPlanner.Resources.Views
 {
@@ -13,6 +17,7 @@ namespace BudgetPlanner.Resources.Views
       public BudgetLog()
       {
         InitializeComponent();
+        UpdateBudgetLog();
       }
       private void ClickButton(object sender, RoutedEventArgs e)
       {
@@ -31,59 +36,119 @@ namespace BudgetPlanner.Resources.Views
 
       private void OnPopupsResponseReceived(object? sender, string response)
       {
-          var parts = response.Split(",");
-          // Turn response to a list and insert overallTransaction (income or expense) to position 0
-          List<string> partsList = parts.ToList();
-          partsList.Insert(0, overallTransaction);
-          
+            Debug.WriteLine($"Response received: {response}");
 
-          if (partsList.Count == 5)
-          {
-              UpdateBudgetLog(partsList);
-          }
-          else
-          {
-              // Handle the case where the popup was closed without a response
-              Debug.WriteLine("Popup closed without response");
-          }
+            var parts = response.Split(",");
+
+            Debug.WriteLine($"Number of parts: {parts.Length}");
+            // Turn response to a list and insert overallTransaction (income or expense) to position 0
+            List<string> partsList = parts.ToList();
+            partsList.Insert(0, overallTransaction);
+            
+            Debug.WriteLine($"Number of partsList: {partsList.Count}");
+
+            if (partsList.Count == 5)
+            {
+
+                var transaction = new Transaction
+                {
+                    Type = partsList[0],
+                    Frequency = partsList[1],
+                    Name = partsList[2],
+                    Value = decimal.Parse(partsList[3]),
+                    Date = DateTime.Parse(partsList[4])
+                };
+                
+                TransactionService.Instance.AddTransaction(transaction);
+                UpdateBudgetLog();
+                
+            }
+            else
+            {
+                // Handle the case where the popup was closed without a response
+                Debug.WriteLine("Popup closed without response");
+            }
       }
 
-      private void UpdateBudgetLog(List<string> responseParts)
+      private void UpdateBudgetLog()
       {
-        // add a row to the grid to hold the new transaction
-        BudgetLogGrid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+        BudgetLogGrid.Children.Clear();
+        BudgetLogGrid.RowDefinitions.Clear();
 
-        // Create an array to hold the TextBlock elements
-        TextBlock[] budgetLogColumn = new TextBlock[responseParts.Count];
-        for (var i = 0; i < responseParts.Count; i++)
+        // Add the header row
+        BudgetLogGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+        AddHeader("Type", 0);
+        AddHeader("Frequency", 1);
+        AddHeader("Name", 2);
+        AddHeader("Value", 3);
+        AddHeader("Date", 4);
+
+        // Add each transaction as a new row
+        foreach (var transaction in TransactionService.Instance.Transactions)
         {
+            BudgetLogGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
 
-            // Create textblocks for each piece of info
-            budgetLogColumn[i] = new TextBlock()
+            var typeTextBlock = CreateTextBlock(transaction.Type, "budget-log-item");
+            var frequencyTextBlock = CreateTextBlock(transaction.Frequency, "budget-log-item");
+            var nameTextBlock = CreateTextBlock(transaction.Name, "budget-log-item");
+            var valueTextBlock = CreateTextBlock(transaction.Value.ToString(), "budget-log-item");
+            var dateTextBlock = CreateTextBlock(transaction.Date.ToString("yyyy-MM-dd"), "budget-log-item");
+
+            if (transaction.Type == "Income")
             {
-                Text = responseParts[i],
-            };
-
-            // Add class to each item
-            budgetLogColumn[i].Classes.Add("budget-log-item");
-
-            // Apply class for income or expense
-            if (responseParts[0] == "Income")
-            {
-                budgetLogColumn[i].Classes.Add("income");
+                AddClass(typeTextBlock, "income");
+                AddClass(frequencyTextBlock, "income");
+                AddClass(nameTextBlock, "income");
+                AddClass(valueTextBlock, "income");
+                AddClass(dateTextBlock, "income");
             }
-            else if (responseParts[0] == "Expense")
+            else if (transaction.Type == "Expense")
             {
-                budgetLogColumn[i].Classes.Add("expense");
+                AddClass(typeTextBlock, "expense");
+                AddClass(frequencyTextBlock, "expense");
+                AddClass(nameTextBlock, "expense");
+                AddClass(valueTextBlock, "expense");
+                AddClass(dateTextBlock, "expense");
             }
-            // Set the grid row and column
-            Grid.SetRow(budgetLogColumn[i], GridRows);
-            Grid.SetColumn(budgetLogColumn[i], i);
 
-            // Add TextBlock to the grid
-            BudgetLogGrid.Children.Add(budgetLogColumn[i]);
+            AddToGrid(typeTextBlock, GridRows, 0);
+            AddToGrid(frequencyTextBlock, GridRows, 1);
+            AddToGrid(nameTextBlock, GridRows, 2);
+            AddToGrid(valueTextBlock, GridRows, 3);
+            AddToGrid(dateTextBlock, GridRows, 4);
+
+            GridRows++;
         }
-        GridRows++;
       }
+
+    private void AddHeader(string text, int column)
+    {
+        var header = new TextBlock { Text = text };
+        header.Classes.Add("budget-log-header");
+        BudgetLogGrid.Children.Add(header);
+        Grid.SetRow(header, 0);
+        Grid.SetColumn(header, column);
+    }
+
+    private TextBlock CreateTextBlock(string text, string className)
+    {
+        var textBlock = new TextBlock { Text = text };
+        textBlock.Classes.Add(className);
+        return textBlock;
+    }
+
+    private void AddClass(TextBlock textBlock, string className)
+    {
+        textBlock.Classes.Add(className);
+    }
+
+    private void AddToGrid(TextBlock textBlock, int row, int column)
+    {
+        BudgetLogGrid.Children.Add(textBlock);
+        Grid.SetRow(textBlock, row);
+        Grid.SetColumn(textBlock, column);
+    }
+
+
   }
 }

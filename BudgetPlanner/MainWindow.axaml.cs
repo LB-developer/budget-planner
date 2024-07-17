@@ -1,6 +1,7 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using BudgetPlanner.Resources.Views;
+using BudgetPlanner.Services;
 
 
 namespace BudgetPlanner;
@@ -10,7 +11,8 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        MainContent.Content = new DashboardView();
+        TransactionService.Instance.LoadTransactions(); // Load transactions on startup
+        MainContent.Content = new DashboardView(); // Default to dashboard view
     }
 
     private void ShowDashboard(object sender, RoutedEventArgs e)
@@ -36,18 +38,6 @@ public partial class MainWindow : Window
         MainContent.Content = new SettingsView();
         TitleHeader.Text = "Settings";
     }
-    // 
-    // private void GetWindowHeight()
-    // {
-    //     var windowHeight = this.Bounds.Height;
-    //     var windowWidth = this.Bounds.Width;
-    //     Console.WriteLine($"Window Height: {windowHeight}");
-    //     Console.WriteLine($"Window Width: {windowWidth}");
-    // }
 
-    // private void ClickAButton(object sender, RoutedEventArgs e)
-    // {
-    //     GetWindowHeight();
-    // }
 
 }

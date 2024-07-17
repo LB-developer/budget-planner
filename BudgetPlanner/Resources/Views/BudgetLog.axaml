@@ -17,7 +17,7 @@
         </Grid.RowDefinitions>
 
         <!-- Total Balance Display -->
-        <TextBlock Grid.Row="0" x:Name="TotalBalanceTextBlock" Text="Total Balance: $0.00" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+        <TextBlock Grid.Row="0" x:Name="TotalBalanceTextBlock" Text="Total Balance: $0.00" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
         <!-- Headers -->
         <Grid Grid.Row="1" Margin="10">
@@ -36,7 +36,7 @@
         </Grid>
 
         <!-- Log Entries -->
-        <ScrollViewer Grid.Row="2" Margin="10">
+        <ScrollViewer Grid.Row="2" Margin="0, 0, 0, 15">
             <Grid x:Name="BudgetLogGrid">
                 <Grid.RowDefinitions>
                     <!-- Initially no rows defined here, rows will be added dynamically -->

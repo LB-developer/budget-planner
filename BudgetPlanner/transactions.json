@@ -1,0 +1,16 @@
+[
+  {
+    "Type": "Income",
+    "Frequency": "Weekly",
+    "Name": "25",
+    "Value": 25.0,
+    "Date": "2024-07-18T00:00:00"
+  },
+  {
+    "Type": "Expense",
+    "Frequency": "Monthly",
+    "Name": "25",
+    "Value": 25.0,
+    "Date": "2024-07-18T00:00:00"
+  }
+]
