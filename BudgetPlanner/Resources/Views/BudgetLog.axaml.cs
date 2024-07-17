@@ -6,12 +6,16 @@ using Avalonia.Interactivity;
 using System.Diagnostics;
 using BudgetPlanner.Models;
 using BudgetPlanner.Services;
+using System.IO;
+using Newtonsoft.Json;
+using BudgetPlanner;
 
 
 namespace BudgetPlanner.Resources.Views
 {
   public partial class BudgetLog : UserControl
   {   
+
       string overallTransaction = "";
       private int GridRows = 0; 
       public BudgetLog()
@@ -73,15 +77,7 @@ namespace BudgetPlanner.Resources.Views
       private void UpdateBudgetLog()
       {
         BudgetLogGrid.Children.Clear();
-        BudgetLogGrid.RowDefinitions.Clear();
-
-        // Add the header row
         BudgetLogGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-        AddHeader("Type", 0);
-        AddHeader("Frequency", 1);
-        AddHeader("Name", 2);
-        AddHeader("Value", 3);
-        AddHeader("Date", 4);
 
         // Add each transaction as a new row
         foreach (var transaction in TransactionService.Instance.Transactions)
@@ -121,15 +117,6 @@ namespace BudgetPlanner.Resources.Views
         }
       }
 
-    private void AddHeader(string text, int column)
-    {
-        var header = new TextBlock { Text = text };
-        header.Classes.Add("budget-log-header");
-        BudgetLogGrid.Children.Add(header);
-        Grid.SetRow(header, 0);
-        Grid.SetColumn(header, column);
-    }
-
     private TextBlock CreateTextBlock(string text, string className)
     {
         var textBlock = new TextBlock { Text = text };
@@ -148,7 +135,6 @@ namespace BudgetPlanner.Resources.Views
         Grid.SetRow(textBlock, row);
         Grid.SetColumn(textBlock, column);
     }
-
 
   }
 }

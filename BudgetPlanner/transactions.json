@@ -1,16 +1,79 @@
 [
   {
     "Type": "Income",
+    "Frequency": "Yearly",
+    "Name": "36",
+    "Value": 67.0,
+    "Date": "2024-07-18T00:00:00"
+  },
+  {
+    "Type": "Expense",
+    "Frequency": "One-Off",
+    "Name": "2728",
+    "Value": 28.0,
+    "Date": "2024-07-18T00:00:00"
+  },
+  {
+    "Type": "Income",
     "Frequency": "Weekly",
+    "Name": "376",
+    "Value": 38.0,
+    "Date": "2024-07-18T00:00:00"
+  },
+  {
+    "Type": "Income",
+    "Frequency": "Yearly",
+    "Name": "37",
+    "Value": 37.0,
+    "Date": "2024-07-18T00:00:00"
+  },
+  {
+    "Type": "Expense",
+    "Frequency": "One-Off",
+    "Name": "37",
+    "Value": 37.0,
+    "Date": "2024-07-18T00:00:00"
+  },
+  {
+    "Type": "Income",
+    "Frequency": "Monthly",
+    "Name": "24",
+    "Value": 24.0,
+    "Date": "2024-07-18T00:00:00"
+  },
+  {
+    "Type": "Expense",
+    "Frequency": "Yearly",
+    "Name": "24",
+    "Value": 24.0,
+    "Date": "2024-07-18T00:00:00"
+  },
+  {
+    "Type": "Income",
+    "Frequency": "Yearly",
+    "Name": "24",
+    "Value": 24.0,
+    "Date": "2024-07-18T00:00:00"
+  },
+  {
+    "Type": "Income",
+    "Frequency": "Yearly",
     "Name": "25",
     "Value": 25.0,
     "Date": "2024-07-18T00:00:00"
   },
   {
     "Type": "Expense",
+    "Frequency": "Yearly",
+    "Name": "26",
+    "Value": 26.0,
+    "Date": "2024-07-18T00:00:00"
+  },
+  {
+    "Type": "Income",
     "Frequency": "Monthly",
-    "Name": "25",
-    "Value": 25.0,
+    "Name": "72",
+    "Value": 90.0,
     "Date": "2024-07-18T00:00:00"
   }
 ]
