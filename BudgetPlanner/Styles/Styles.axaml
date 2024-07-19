@@ -2,12 +2,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         >
         <Style Selector="Menu.header-menu">
-        <Setter Property="Background" Value="#383838"/> 
+        <Setter Property="Background" Value="#002137"/> 
+        <Setter Property="Foreground" Value="#FFFFFF"/> <!-- White Text as default -->
       </Style>
     
     <Style Selector="Window">
-        <Setter Property="Background" Value="#2E2E2E"/> <!-- Dark gray background -->
-        <Setter Property="Foreground" Value="White"/> <!-- White Text as default -->
+        <Setter Property="Background" Value="#002137"/> <!-- Dark gray background -->
+        <Setter Property="Foreground" Value="#FFFFFF"/> <!-- White Text as default -->
     </Style>
 
     <Style Selector="TextBlock.bold">
@@ -50,10 +51,15 @@
     </Style>
 
     <Style Selector="Button.navigation">
-        <Setter Property="Background" Value="#aa00ff" />
+        <Setter Property="Background" Value="#003A61"/>
+        <Setter Property="Foreground" Value="#FFFFFF"/> <!-- White Text as default -->
         <Setter Property="Height" Value="60" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
+        
+        <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+          <Setter Property="Foreground" Value="#FFFFFF" />
+        </Style>
     </Style>
 
     <Style Selector="Button.selected">
@@ -81,21 +87,26 @@
         <Setter Property="BorderBrush" Value="#4A4A4A"/>
         <Setter Property="BorderThickness" Value="1"/>
     </Style>
-
+      <!-- Recent transactions headers are textblocks -->
+    <Style Selector="TextBlock.budget-log-header">
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
     <!-- Transaction Log Item Style -->
     <Style Selector="TextBlock.budget-log-item.income">
         <Setter Property="FontSize" Value="14"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="#FFFFFF"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="VerticalAlignment" Value="Top"/>
         <Setter Property="TextAlignment" Value="Center"/>
         <Setter Property="Background" Value="#4CAF50"/> <!-- Green for income -->
         <Setter Property="Padding" Value="10"/>
     </Style>
-
+    <!-- Recent Transaction Log Item Style -->
     <Style Selector="TextBlock.budget-log-item.expense">
         <Setter Property="FontSize" Value="14"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="#FFFFFF"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="VerticalAlignment" Value="Top"/>
         <Setter Property="TextAlignment" Value="Center"/>
@@ -107,7 +118,6 @@
       <Setter Property="Background" Value="#4CAF50"/>
       <Setter Property="Foreground" Value="#FFFFFF"/>
       <Setter Property="FontWeight" Value="Bold"/>
-      <Setter Property="Padding" Value="10"/>
       <Setter Property="Margin" Value="10"/>
       <Setter Property="CornerRadius" Value="5"/>
       
@@ -120,7 +130,6 @@
       <Setter Property="Background" Value="#F44336"/>
       <Setter Property="Foreground" Value="#FFFFFF"/>
       <Setter Property="FontWeight" Value="Bold"/>
-      <Setter Property="Padding" Value="10"/>
       <Setter Property="Margin" Value="10"/>
       <Setter Property="CornerRadius" Value="5"/>
       

@@ -36,7 +36,7 @@
         </Grid>
 
         <!-- Log Entries -->
-        <ScrollViewer Grid.Row="2" Margin="0, 0, 0, 15">
+        <ScrollViewer Grid.Row="2" Margin="0, 0, 0, 15" >
             <Grid x:Name="BudgetLogGrid">
                 <Grid.RowDefinitions>
                     <!-- Initially no rows defined here, rows will be added dynamically -->
@@ -53,9 +53,9 @@
 
         <!-- Buttons at the bottom -->
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50">
-            <Button x:Name="IncomeButton" VerticalAlignment="Center" Click="OpenPopups" Classes="income" Margin="5">Add Income</Button>
-            <Button x:Name="ExpenseButton" VerticalAlignment="Center" Click="OpenPopups" Classes="expense" Margin="5">Add Expense</Button>
-            <Button x:Name="RemoveLastButton" VerticalAlignment="Center" Click="RemoveLastLog" Classes="" Margin="5">Remove Last Transaction</Button>
+            <Button x:Name="IncomeButton" VerticalAlignment="Center" Click="OpenPopups" Classes="income" >Add Income</Button>
+            <Button x:Name="ExpenseButton" VerticalAlignment="Center" Click="OpenPopups" Classes="expense" >Add Expense</Button>
+            <Button x:Name="RemoveLastButton" VerticalAlignment="Center" Click="RemoveLastLog" Classes="expense" >Remove Last Transaction</Button>
         </StackPanel>
     </Grid>
 </UserControl>

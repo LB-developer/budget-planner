@@ -2,7 +2,8 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using BudgetPlanner.Resources.Views;
 using BudgetPlanner.Services;
-
+using Avalonia.Markup.Xaml;
+using System.Diagnostics;
 
 namespace BudgetPlanner;
 

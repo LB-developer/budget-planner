@@ -6,9 +6,6 @@ using Avalonia.Interactivity;
 using System.Diagnostics;
 using BudgetPlanner.Models;
 using BudgetPlanner.Services;
-using System.IO;
-using Newtonsoft.Json;
-using BudgetPlanner;
 
 
 namespace BudgetPlanner.Resources.Views
@@ -41,16 +38,13 @@ namespace BudgetPlanner.Resources.Views
 
       private void OnPopupsResponseReceived(object? sender, string response)
       {
-            Debug.WriteLine($"Response received: {response}");
 
             var parts = response.Split(",");
 
-            Debug.WriteLine($"Number of parts: {parts.Length}");
             // Turn response to a list and insert overallTransaction (income or expense) to position 0
             List<string> partsList = parts.ToList();
             partsList.Insert(0, overallTransaction);
             
-            Debug.WriteLine($"Number of partsList: {partsList.Count}");
 
             if (partsList.Count == 5)
             {
@@ -84,37 +78,30 @@ namespace BudgetPlanner.Resources.Views
         foreach (var transaction in TransactionService.Instance.Transactions)
         {
             BudgetLogGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-
-            var typeTextBlock = CreateTextBlock(transaction.Type, "budget-log-item");
-            var frequencyTextBlock = CreateTextBlock(transaction.Frequency, "budget-log-item");
-            var nameTextBlock = CreateTextBlock(transaction.Name, "budget-log-item");
-            var valueTextBlock = CreateTextBlock(transaction.Value.ToString(), "budget-log-item");
-            var dateTextBlock = CreateTextBlock(transaction.Date.ToString("yyyy-MM-dd"), "budget-log-item");
-
-            if (transaction.Type == "Income")
+            
+            if (transaction.Type != null && transaction.Frequency != null && transaction.Name != null)
             {
-                AddClass(typeTextBlock, "income");
-                AddClass(frequencyTextBlock, "income");
-                AddClass(nameTextBlock, "income");
-                AddClass(valueTextBlock, "income");
-                AddClass(dateTextBlock, "income");
-            }
-            else if (transaction.Type == "Expense")
-            {
-                AddClass(typeTextBlock, "expense");
-                AddClass(frequencyTextBlock, "expense");
-                AddClass(nameTextBlock, "expense");
-                AddClass(valueTextBlock, "expense");
-                AddClass(dateTextBlock, "expense");
-            }
+                var typeTextBlock = CreateTextBlock(transaction.Type, "budget-log-item");
+                var frequencyTextBlock = CreateTextBlock(transaction.Frequency, "budget-log-item");
+                var nameTextBlock = CreateTextBlock(transaction.Name, "budget-log-item");
+                var valueTextBlock = CreateTextBlock("$"+transaction.Value.ToString("#,##0"), "budget-log-item");
+                var dateTextBlock = CreateTextBlock(transaction.Date.ToString("yyyy-MM-dd"), "budget-log-item");
 
-            AddToGrid(typeTextBlock, GridRows, 0);
-            AddToGrid(frequencyTextBlock, GridRows, 1);
-            AddToGrid(nameTextBlock, GridRows, 2);
-            AddToGrid(valueTextBlock, GridRows, 3);
-            AddToGrid(dateTextBlock, GridRows, 4);
+                TextBlock[] transactionDataBlocks = [typeTextBlock, frequencyTextBlock, nameTextBlock, valueTextBlock, dateTextBlock];
+                
+                if (transaction.Type == "Income")
+                {foreach(var block in transactionDataBlocks){AddClass(block, "income");}}
+                else if (transaction.Type == "Expense")
+                {foreach(var block in transactionDataBlocks){AddClass(block, "expense");}}
 
-            GridRows++;
+                AddToGrid(typeTextBlock, GridRows, 0);
+                AddToGrid(frequencyTextBlock, GridRows, 1);
+                AddToGrid(nameTextBlock, GridRows, 2);
+                AddToGrid(valueTextBlock, GridRows, 3);
+                AddToGrid(dateTextBlock, GridRows, 4);
+
+                GridRows++;
+            }
         }
       }
 

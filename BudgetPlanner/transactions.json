@@ -1,37 +1,16 @@
 [
   {
     "Type": "Income",
-    "Frequency": "Yearly",
-    "Name": "25",
-    "Value": 25.0,
-    "Date": "2024-07-18T00:00:00"
-  },
-  {
-    "Type": "Income",
     "Frequency": "Monthly",
-    "Name": "24",
-    "Value": 24.0,
-    "Date": "2024-07-18T00:00:00"
-  },
-  {
-    "Type": "Income",
-    "Frequency": "Monthly",
-    "Name": "373",
-    "Value": 37.0,
-    "Date": "2024-07-18T00:00:00"
-  },
-  {
-    "Type": "Income",
-    "Frequency": "Monthly",
-    "Name": "24",
-    "Value": 24.0,
-    "Date": "2024-07-18T00:00:00"
+    "Name": "Work",
+    "Value": 4000.0,
+    "Date": "2024-07-14T00:00:00"
   },
   {
     "Type": "Expense",
-    "Frequency": "Yearly",
-    "Name": "24",
-    "Value": 24.0,
-    "Date": "2024-07-18T00:00:00"
+    "Frequency": "Monthly",
+    "Name": "Gym",
+    "Value": 40.0,
+    "Date": "2024-07-19T00:00:00"
   }
 ]

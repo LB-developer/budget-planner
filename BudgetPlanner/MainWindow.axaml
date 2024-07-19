@@ -32,11 +32,11 @@
         <!-- Header -->
         <TextBlock x:Name="TitleHeader" Grid.Row="1" Text="Dashboard" TextDecorations="Underline" FontSize="24" HorizontalAlignment="Center" Margin="10"/>
         <!-- Main Content Area -->
-        <DockPanel Grid.Row="2"  >
+        <DockPanel Grid.Row="2">
           <ContentControl x:Name="MainContent" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
         </DockPanel>
         <!-- Bottom Navigation -->
-        <DockPanel Grid.Row="3" VerticalAlignment="Bottom" Background="Gray">
+        <DockPanel Grid.Row="3" VerticalAlignment="Bottom" >
             <Button Content="Dashboard" Classes="navigation" Click="ShowDashboard"/>
             <Button Content="Transaction Log" Classes="navigation" Click="ShowAddTransaction" />
             <Button Content="Reports" Classes="navigation" Click="ShowReports" />

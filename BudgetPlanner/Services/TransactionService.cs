@@ -8,7 +8,7 @@ namespace BudgetPlanner.Services
 {
     public class TransactionService
     {
-        private static TransactionService _instance;
+        private static TransactionService? _instance;
         public static TransactionService Instance => _instance ??= new TransactionService();
 
         public List<Transaction> Transactions { get; private set; } = new List<Transaction>();
