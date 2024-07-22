@@ -9,8 +9,9 @@
         <local:DashboardViewModel />
     </UserControl.DataContext>
     
-    <lvc:CartesianChart
+    <lvc:PieChart
         Series="{Binding Series}"
+        Title="{Binding Title}"
         >
-    </lvc:CartesianChart>
+    </lvc:PieChart>
 </UserControl>

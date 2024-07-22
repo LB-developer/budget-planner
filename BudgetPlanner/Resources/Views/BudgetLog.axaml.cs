@@ -56,7 +56,7 @@ namespace BudgetPlanner.Resources.Views
                     Name = partsList[2],
                     Value = decimal.Parse(partsList[3]),
                     Date = DateTime.Parse(partsList[4])
-                };
+                }; 
                 
                 TransactionService.Instance.AddTransaction(transaction);
                 UpdateBudgetLog();
